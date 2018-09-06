@@ -1,0 +1,23 @@
+{
+  "name": "geo2svg",
+  "version": "1.0.0",
+  "description": "A tiny JavaScript library converting geojson object to svg",
+  "main": "geo2svg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nightn/geo2svg.git"
+  },
+  "keywords": [
+    "geojson",
+    "svg"
+  ],
+  "author": "nightn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nightn/geo2svg/issues"
+  },
+  "homepage": "https://github.com/nightn/geo2svg#readme"
+}
