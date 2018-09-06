@@ -1,6 +1,6 @@
 # geo2svg
 
-[English README](./README.md)
+[English README](https://github.com/nightn/geo2svg/blob/master/README.md)
 
 [geo2svg](https://github.com/nightn/geo2svg) 是一个非常小巧的 JavaScript 库，用于将 geojson 对象转为 svg 字符串或 svg 元素，你可以指定很多自定义的转换参数，比如尺寸、padding、样式等。一般来说，geojson 对象可以是定义在 [RFC7946](https://tools.ietf.org/html/rfc7946) 中的以下 9 种对象之一：`Point`, `LineString`, `Polygon`, `MultiPoint`, `MultiLineString`, `MultiPolygon`, `GeometryCollection`, `Feature` and `FeatureCollection`。不过目前为止，只支持 `Polygon` 和 `MultiPolygon`，以及仅由 `Polygon` 组成的 `GeometryCollection` 和 `FeatureCollection` 。
 

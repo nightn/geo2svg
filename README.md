@@ -1,6 +1,6 @@
 # geo2svg
 
-[Simplified Chinese (简体中文) README](./README-zh.md)
+[Simplified Chinese (简体中文) README](https://github.com/nightn/geo2svg/blob/master/README-zh.md)
 
 [geo2svg](https://github.com/nightn/geo2svg) is a tiny JavaScript library for converting geojson object to svg string or svg element given your options including size, padding, style etc. Generally, the geojson object can be one of the nice objects defined in [RFC7946](https://tools.ietf.org/html/rfc7946):  `Point`, `LineString`, `Polygon`, `MultiPoint`, `MultiLineString`, `MultiPolygon`, `GeometryCollection`, `Feature` and `FeatureCollection`. But now, only `Polygon`, `MultiPolygon`  are supported. By the way,  `GeometryCollection` and `FeatureCollection` that only consisting of  `Polygon`。
 
