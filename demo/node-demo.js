@@ -1,15 +1,16 @@
-
 var geo2svg = require('../geo2svg');
+
 var option = {
-    size: [256, 256],
-    padding: [10, 10, 10, 10],
-    output: 'string',
-    precision: 3,
-    stroke: 'red',
-    strokeWidth: '1px',
-    background: '#fff',
-    fill: '#fff',
-    fillOpacity: 1
+    size: [512, 512],           // size[0] is svg width, size[1] is svg height
+    padding: [10, 10, 10, 10],  // paddingTop, paddingRight, paddingBottom, paddingLeft, respectively
+    output: 'string',           // output type: 'string' | 'element'(only supported in browser)
+    precision: 3,               // svg coordinates precision
+    stroke: 'red',              // stroke color
+    strokeWidth: '2px',         // stroke width
+    background: '#ccc',         // svg background color, and as the fill color of polygon hole
+    fill: 'green',              // fill color
+    fillOpacity: 0.5,           // fill opacity
+    radius: 5                   // only for `Point`, `MultiPoint`
 };
 var geojson = {
     "type": "FeatureCollection",

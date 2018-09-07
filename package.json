@@ -1,6 +1,6 @@
 {
   "name": "geo2svg",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A tiny JavaScript library converting geojson object to svg",
   "main": "geo2svg.js",
   "scripts": {
