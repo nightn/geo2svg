@@ -43,9 +43,10 @@
 
     svg.createPath = function (points, option) {
         let p = option.precision;
+        // firefox cannot use common as splitor, so use space
         let pathd = points.map((pt, index) => {
             return `${index === 0 ? 'M' : 'L'}${pt[0].toFixed(p)} ${pt[1].toFixed(p)}`;
-        }).join(',');
+        }).join(' ');
         let svgStr = `<path d="${pathd}" />`;
         return svg.style(svgStr, option);
     }
@@ -263,7 +264,8 @@
     }
 
     const geo2svg = function (geojson, option) {
-        let funcName = 'convert' + geojson.type;
+        const type = geojson.type;
+        let funcName = 'convert' + type;
         if (!converter[funcName]) {
             throw new Error('The type of input object is not supported.');
         }
@@ -274,7 +276,23 @@
             option[key] = option[key] || defaultOption[key];
         }
         let fullSvgStr = '<svg xmlns="http://www.w3.org/2000/svg" style="background:' + option.background + '" width="' + option.size[0] + '" height="' + option.size[1] + '" >';
-        let svgContent = converter[funcName](geojson, option, commonOpt);
+        let convert = converter[funcName];
+
+        // handle one point
+        // TODO more complicated situation
+        if (type === 'Point' || 
+           (type === 'GeometryCollection' && geojson.geometries.length === 1 && geojson.geometries[0].type === 'Point') ||
+           (type === 'FeatureCollection' && geojson.features.length === 1 
+            && geojson.features[0].geometry.type === 'Point' )) {
+            convert = (geojson, option, commonOpt) => {
+                let { xRes, yRes, res, extent, origin, geometrySize } = commonOpt;
+                let [paddingTop, paddingRight, paddingBottom, paddingLeft] = option.padding;
+                let center = [paddingLeft + geometrySize[0] / 2, paddingTop + geometrySize[1] / 2];
+                return svg.createCircle(center, option);
+            }
+        }
+
+        let svgContent = convert(geojson, option, commonOpt);
         fullSvgStr += svgContent;
         fullSvgStr += '</svg>';
         let fullSvg = fullSvgStr;
